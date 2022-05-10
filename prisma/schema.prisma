@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Feedback {
+  id String @id @default(uuid())
+
+  type       String
+  comment    String
+  screenshot String?
+
+  @@map("feedbacks")
+}
+
+model Transaction {
+  id String @id @default(uuid())
+
+  title    String
+  amount   Int
+  category String
+  type     String
+
+  @@map("transactions")
+}
