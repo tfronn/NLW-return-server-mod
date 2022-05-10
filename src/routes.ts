@@ -7,7 +7,7 @@ import { SubmitTransactionUseCase } from './use-cases/submit-transaction-use-cas
 export const routes = express.Router()
 
 routes.post('/transactions', async (req, res) => {
-  const { title, amount, category, type } = req.body
+  const { title, amount, category, type, createdAt } = req.body
 
 
   try {
@@ -18,7 +18,8 @@ routes.post('/transactions', async (req, res) => {
     title,
     amount,
     category,
-    type
+    type,
+    createdAt
   })
 
     return res.status(201).send();
