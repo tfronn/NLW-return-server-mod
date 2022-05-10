@@ -29,7 +29,7 @@ routes.post('/transactions', async (req, res) => {
     createdAt
   })
 
-    return res.status(201).json({PrismaTransactionsRepository}).send();
+    return res.status(201).json({prismaTransactionsRepository}).send();
   } catch(err) {
     console.error(err)
 
