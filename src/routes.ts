@@ -30,7 +30,7 @@ routes.post('/transactions', async (req, res) => {
     createdAt
   })
 
-    return res.status(201).json(transactions).send();
+    return res.status(201).json([transactions]).send();
   } catch(err) {
     console.error(err)
 
