@@ -6,6 +6,10 @@ import { SubmitFeedbackUseCase } from './use-cases/submit-feedback-use-case';
 import { SubmitTransactionUseCase } from './use-cases/submit-transaction-use-case'
 export const routes = express.Router()
 
+routes.get('/transactions', async (req, res) => {
+  res.send('transaction')
+})
+
 routes.post('/transactions', async (req, res) => {
   const { title, amount, category, type, createdAt } = req.body
 
