@@ -20,10 +20,11 @@ model Feedback {
 model Transaction {
   id String @id @default(uuid())
 
-  title    String
-  amount   Int
-  category String
-  type     String
+  title     String
+  amount    Int
+  category  String
+  type      String
+  createdAt DateTime @default(now())
 
   @@map("transactions")
 }
