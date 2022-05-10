@@ -5,6 +5,7 @@ interface SubmitTransactionUseCaseRequest {
   amount: number;
   category: string;
   type: string;
+  createdAt: Date;
 }
 
 export class SubmitTransactionUseCase {
@@ -14,7 +15,7 @@ export class SubmitTransactionUseCase {
   ) {}
 
   async execute(request: SubmitTransactionUseCaseRequest) {
-    const { title, amount, category, type } = request;
+    const { title, amount, category, type, createdAt } = request;
 
     if (!title) {
       throw new Error('Title is required.')
@@ -36,7 +37,8 @@ export class SubmitTransactionUseCase {
       title,
       amount,
       category,
-      type
+      type,
+      createdAt
     })
   }
 }

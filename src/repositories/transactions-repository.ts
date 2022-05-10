@@ -3,6 +3,7 @@ export interface TransactionCreateData {
   amount: number;
   category: string;
   type: string;
+  createdAt: Date;
 }
 
 export interface TransactionsRepository {
