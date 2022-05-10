@@ -21,7 +21,7 @@ routes.post('/transactions', async (req, res) => {
   try {
   const prismaTransactionsRepository = new PrismaTransactionsRepository()
   const submitTransactionUseCase = new SubmitTransactionUseCase(prismaTransactionsRepository)
-  
+  const transactions = await prisma.transaction.findMany();
   await submitTransactionUseCase.execute({
     title,
     amount,
@@ -30,7 +30,7 @@ routes.post('/transactions', async (req, res) => {
     createdAt
   })
 
-    return res.status(201).json({title, amount, category, type, createdAt}).send();
+    return res.status(201).json(transactions).send();
   } catch(err) {
     console.error(err)
 
