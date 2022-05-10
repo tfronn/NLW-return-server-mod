@@ -1,3 +1,4 @@
+import { prisma } from './prisma'
 import express from 'express';
 import { NodemailerMailAdapter } from './adapters/nodemailer/nodemailer-mail-adapter';
 import { PrismaFeedbacksRepository } from './repositories/prisma/prisma-feedbacks-repository';
@@ -6,9 +7,12 @@ import { SubmitFeedbackUseCase } from './use-cases/submit-feedback-use-case';
 import { SubmitTransactionUseCase } from './use-cases/submit-transaction-use-case'
 export const routes = express.Router()
 
+
 routes.get('/transactions', async (req, res) => {
- console.log(req, res)
+  const transactions = await prisma.transaction.findMany();
+  res.json(transactions)
 })
+
 
 routes.post('/transactions', async (req, res) => {
   const { title, amount, category, type, createdAt } = req.body
